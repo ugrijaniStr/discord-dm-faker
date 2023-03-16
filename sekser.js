@@ -7,7 +7,7 @@ function randStatus() {
 }
 
 function randColor() {
-    let colorList = ["blue","yellow","orange","purple","green","white","pink"];
+    let colorList = ["blue","yellow","orange","purple","green","white","pink","red","orangered"];
     let randomColor = colorList[Math.floor(Math.random() * colorList.length)];
     return randomColor;
 }
@@ -30,6 +30,12 @@ function randomAvatar() {
     return randomLink;
 }
 
+function randomMode() {
+    const modeList = ["idle","dnd","online"];
+    let randMode = modeList[Math.floor(Math.random() * modeList.length)];
+    return randMode;
+}
+
 async function seksDC() {
     let option = 1;
     if(option != 0) {
@@ -38,7 +44,11 @@ async function seksDC() {
                 let dm = document.querySelectorAll(".overflow-1wOqNV")[i];
                 let avatar = document.querySelectorAll(".avatar-31d8He")[i]; 
                 let status = document.querySelectorAll(".subText-3Sk0zy")[i];
+                let mode = document.querySelectorAll('.pointerEvents-2KjWnj')[i];
 
+                status.style.color = randColor();
+                mode.setAttribute("mask", `url(#svg-mask-status-${randomMode()})`);
+                mode.setAttribute("fill", randColor());
                 status.style.color = randColor();
 
                 dm.innerHTML =`<b style='color: ${randColor()};'>${randUsername(5)}</b>`;
@@ -56,8 +66,11 @@ async function seksDC() {
                 let dm = document.querySelectorAll(".overflow-1wOqNV")[randDM];
                 let avatar = document.querySelectorAll(".avatar-31d8He")[randDM]; 
                 let status = document.querySelectorAll(".subText-3Sk0zy")[randDM];
+                let mode = document.querySelectorAll('.pointerEvents-2KjWnj')[randDM];
 
                 status.style.color = randColor();
+                mode.setAttribute("mask", `url(#svg-mask-status-${randomMode()})`);
+                mode.setAttribute("fill", randColor());
 
                 dm.innerHTML =`<b style='color: ${randColor()};'>${randUsername(5)}</b>`;
                 avatar.setAttribute("src",`${randomAvatar()}`);
